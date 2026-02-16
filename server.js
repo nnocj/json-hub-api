@@ -22,9 +22,13 @@ const PORT = process.env.PORT || 3000;
 
 // Allow localhost and any other frontend origin
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000', 'https://wdd330-sleepoutside-team11.onrender.com', 'https://json-hub-api.onrender.com'],
-  methods: ['GET','POST','PUT','DELETE'],
-  allowedHeaders: [{'Content-Type':'application/json'}, 'Authorization']
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://wdd330-sleepoutside-team11.onrender.com"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 
