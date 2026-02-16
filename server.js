@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 // Allow localhost and any other frontend origin
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://json-hub-api.onrender.com'],
+  origin: ['http://localhost:5173', 'http://localhost:5173/checkout/index.html', 'https://json-hub-api.onrender.com'],
   methods: ['GET','POST','PUT','DELETE'],
   allowedHeaders: [{'Content-Type':'application/json'}, 'Authorization']
 }));
