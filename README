@@ -1,0 +1,268 @@
+🚀 json-hub-api
+
+A flexible, secure, and lightweight JSON document storage API built with Node.js, Express, and PostgreSQL.
+
+json-hub-api allows users or organizations to store structured JSON data in a simple document + folder system — all inside a single database table — while supporting full CRUD operations and secure access via passkeys.
+
+🌍 Why This Exists
+
+This project was inspired by the need for a backend that simply accepts and stores JSON data without requiring predefined schemas.
+
+Instead of building custom backends for every small app or prototype, json-hub-api acts as a:
+
+JSON-as-a-Service backend
+
+It allows developers to focus on frontend logic while this API handles structured storage securely.
+
+🧠 Core Concept
+
+All documents are stored in one table with the following structure:
+
+title → Name of the document
+
+folder → Logical grouping (e.g., orders, messages, logs)
+
+owner → User or company name
+
+passkey_hash → Encrypted secret key
+
+data → JSON content
+
+created_at
+
+updated_at
+
+This creates a flexible document hub that supports multiple use cases inside one database.
+
+🔐 Security Model
+
+Each document is:
+
+Tied to an owner
+
+Protected by a secret passkey (bcrypt hashed)
+
+Only users with correct credentials can:
+
+Fetch
+
+Update
+
+Delete
+
+List documents
+
+⚙️ Features
+✅ Create Document
+
+Store any valid JSON under a folder and owner.
+
+✅ Fetch Document (Secure)
+
+Retrieve a single document using:
+
+title
+
+folder
+
+owner
+
+passkey
+
+✅ Update Document
+
+Update:
+
+title
+
+folder
+
+owner
+
+passkey
+
+JSON data (full replacement)
+
+✅ Delete Document
+
+Securely remove a document.
+
+✅ List Documents by Folder
+
+Filter by:
+
+owner
+
+folder
+
+passkey
+
+Perfect for retrieving:
+
+All orders
+
+All messages
+
+All logs
+
+All reports
+
+📦 Real-World Use Cases
+🛒 E-commerce Prototype
+
+Store incoming orders under:
+
+folder: "orders"
+
+
+Frontend can list all orders for dashboard display.
+
+💬 Messaging System
+
+Store messages under:
+
+folder: "messages"
+
+
+Retrieve all messages in one API call.
+
+📊 Admin Dashboard
+
+Store:
+
+logs
+
+activity reports
+
+analytics data
+
+All within structured folders.
+
+🎓 Educational CRUD Teaching Tool
+
+Use this API to demonstrate:
+
+Create
+
+Read
+
+Update
+
+Delete
+
+Without needing complex schemas.
+
+🚀 Rapid Prototyping Engine
+
+Build complete working apps in days instead of weeks.
+
+Use this API as the backend for:
+
+School systems
+
+Workforce apps
+
+Marketplaces
+
+Book platforms
+
+Internal tools
+
+🏗️ Tech Stack
+
+Node.js (ES Modules)
+
+Express.js
+
+PostgreSQL
+
+bcrypt
+
+Swagger (API documentation)
+
+Render (cloud database hosting)
+
+📄 API Documentation
+
+Swagger UI available at:
+
+/docs
+
+🧪 Example Request
+Create Document
+POST /api/documents/create
+
+{
+  "title": "Order_001",
+  "folder": "orders",
+  "owner": "Acme Corp",
+  "secret_passkey": "mySecret123",
+  "data": {
+    "customer": "John Doe",
+    "items": 3,
+    "total": 120
+  }
+}
+
+🎯 Design Philosophy
+
+This API intentionally:
+
+Does NOT enforce strict schema
+
+Does NOT create multiple relational tables
+
+Does NOT restrict JSON structure
+
+Instead:
+
+The frontend defines structure.
+The API securely stores and retrieves it.
+
+This makes it ideal for:
+
+Prototypes
+
+Small apps
+
+Learning projects
+
+Flexible internal tools
+
+⚖️ Trade-Off
+
+Using a single-table JSON storage approach prioritizes:
+
+✔ Simplicity
+✔ Flexibility
+✔ Speed
+✔ Rapid development
+
+Over:
+
+✖ Complex relational querying
+✖ Heavy analytics
+✖ Enterprise-scale normalization
+
+🚀 Future Improvements
+
+JWT-based authentication
+
+Owner-level authentication system
+
+Rate limiting
+
+JSON schema validation (optional)
+
+Folder-level indexing
+
+Advanced querying
+
+👨🏽‍💻 Author
+
+Nicholas Commey
+Backend Developer | Systems Thinker | Product Builder
+
+💡 One Sentence Summary
+
+json-hub-api is a secure, flexible JSON document hub that allows developers and organizations to store and manage structured data without rigid schemas — enabling rapid backend development and real-world experimentation.
