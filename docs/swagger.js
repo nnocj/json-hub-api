@@ -9,17 +9,8 @@ const options = {
       description: "API to receive and retrieve any JSON data"
     },
     servers: [{ url: "http://localhost:3000" }],
-    components: {
-      securitySchemes: {
-        ApiKeyAuth: {
-          type: "apiKey",
-          in: "header",
-          name: "x-api-key"
-        }
-      }
-    }
   },
-  apis: ["./routes/*.js"], // auto-pick JSDoc comments in routes
+  apis: ["./routes/*.js"], // points to your route files
 };
 
 const swaggerSpec = swaggerJsdoc(options);
