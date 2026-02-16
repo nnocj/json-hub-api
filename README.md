@@ -2,7 +2,7 @@
 
 A flexible, secure, and lightweight JSON document storage API built with Node.js, Express, and PostgreSQL.
 
-json-hub-api allows users or organizations to store structured JSON data in a simple document + folder system — all inside a single database table — while supporting full CRUD operations and secure access via passkeys.
+json-hub-api allows users and organizations to store structured JSON data inside a simple document + folder system — all within a single database table — while supporting full CRUD operations and secure access via passkeys.
 
 🌍 Why This Exists
 
@@ -12,27 +12,22 @@ Instead of building custom backends for every small app or prototype, json-hub-a
 
 JSON-as-a-Service backend
 
-It allows developers to focus on frontend logic while this API handles structured storage securely.
+It enables developers to focus on frontend logic while this API handles structured storage securely.
 
 🧠 Core Concept
 
-All documents are stored in one table with the following structure:
+All documents are stored in a single table with the following structure:
 
-title → Name of the document
+Field	Description
+title	Name of the document
+folder	Logical grouping (e.g., orders, messages, logs)
+owner	User or company name
+passkey_hash	Encrypted secret key
+data	JSON content
+created_at	Timestamp of creation
+updated_at	Timestamp of last update
 
-folder → Logical grouping (e.g., orders, messages, logs)
-
-owner → User or company name
-
-passkey_hash → Encrypted secret key
-
-data → JSON content
-
-created_at
-
-updated_at
-
-This creates a flexible document hub that supports multiple use cases inside one database.
+This creates a flexible document hub capable of supporting multiple use cases inside one database.
 
 🔐 Security Model
 
@@ -42,15 +37,17 @@ Tied to an owner
 
 Protected by a secret passkey (bcrypt hashed)
 
-Only users with correct credentials can:
+Only users with valid credentials can:
 
-Fetch
+Fetch documents
 
-Update
+Update documents
 
-Delete
+Delete documents
 
 List documents
+
+No raw passkeys are stored.
 
 ⚙️ Features
 ✅ Create Document
@@ -67,19 +64,19 @@ folder
 
 owner
 
-passkey
+secret_passkey
 
 ✅ Update Document
 
-Update:
+Modify:
 
-title
+Title
 
-folder
+Folder
 
-owner
+Owner
 
-passkey
+Passkey
 
 JSON data (full replacement)
 
@@ -89,13 +86,13 @@ Securely remove a document.
 
 ✅ List Documents by Folder
 
-Filter by:
+Filter using:
 
 owner
 
 folder
 
-passkey
+secret_passkey
 
 Perfect for retrieving:
 
@@ -115,7 +112,7 @@ Store incoming orders under:
 folder: "orders"
 
 
-Frontend can list all orders for dashboard display.
+Frontend dashboards can fetch and display all orders in real time.
 
 💬 Messaging System
 
@@ -130,17 +127,17 @@ Retrieve all messages in one API call.
 
 Store:
 
-logs
+Logs
 
-activity reports
+Activity reports
 
-analytics data
+Analytics data
 
-All within structured folders.
+All organized by folders.
 
 🎓 Educational CRUD Teaching Tool
 
-Use this API to demonstrate:
+Demonstrate:
 
 Create
 
@@ -150,11 +147,11 @@ Update
 
 Delete
 
-Without needing complex schemas.
+Without complex database schemas.
 
 🚀 Rapid Prototyping Engine
 
-Build complete working apps in days instead of weeks.
+Build functional backend systems in days instead of weeks.
 
 Use this API as the backend for:
 
@@ -180,7 +177,7 @@ bcrypt
 
 Swagger (API documentation)
 
-Render (cloud database hosting)
+Render (Cloud PostgreSQL hosting)
 
 📄 API Documentation
 
@@ -208,18 +205,18 @@ POST /api/documents/create
 
 This API intentionally:
 
-Does NOT enforce strict schema
+Does not enforce strict schemas
 
-Does NOT create multiple relational tables
+Does not create multiple relational tables
 
-Does NOT restrict JSON structure
+Does not restrict JSON structure
 
 Instead:
 
 The frontend defines structure.
 The API securely stores and retrieves it.
 
-This makes it ideal for:
+Ideal for:
 
 Prototypes
 
@@ -231,7 +228,7 @@ Flexible internal tools
 
 ⚖️ Trade-Off
 
-Using a single-table JSON storage approach prioritizes:
+The single-table JSON storage approach prioritizes:
 
 ✔ Simplicity
 ✔ Flexibility
@@ -252,11 +249,11 @@ Owner-level authentication system
 
 Rate limiting
 
-JSON schema validation (optional)
+Optional JSON schema validation
 
 Folder-level indexing
 
-Advanced querying
+Advanced querying features
 
 👨🏽‍💻 Author
 
