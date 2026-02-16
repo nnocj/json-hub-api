@@ -1,0 +1,93 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "JSON Hub API",
+    "version": "1.0.0",
+    "description": "API to receive and retrieve any JSON data"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local server"
+    },
+    {
+      "url": "https://json-hub-api.onrender.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/documents": {
+      "post": {
+        "summary": "Create a new document",
+        "description": "Creates a document with title, folder, owner, secret_passkey and JSON data.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "title",
+                  "folder",
+                  "owner",
+                  "secret_passkey",
+                  "data"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Test Document"
+                  },
+                  "folder": {
+                    "type": "string",
+                    "example": "demo-folder"
+                  },
+                  "owner": {
+                    "type": "string",
+                    "example": "Nicholas"
+                  },
+                  "secret_passkey": {
+                    "type": "string",
+                    "example": "12345"
+                  },
+                  "data": {
+                    "type": "object",
+                    "example": {
+                      "message": "Hello Swagger",
+                      "amount": 200,
+                      "active": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Document created successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": true,
+                  "message": "Document created successfully"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing required fields",
+            "content": {
+              "application/json": {
+                "example": {
+                  "success": false,
+                  "message": "All fields are required"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
