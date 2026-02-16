@@ -1,8 +1,6 @@
 import pool from "../db/index.js";
 import bcrypt from "bcrypt";
 
-import pool from "../db/index.js";
-import bcrypt from "bcrypt";
 
 /* =====================================================
    INTERNAL AUTH FUNCTION
