@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors({
   origin: ['http://localhost:5173', 'https://json-hub-api.onrender.com'],
   methods: ['GET','POST','PUT','DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: [{'Content-Type':'application/json'}, 'Authorization']
 }));
 
 
